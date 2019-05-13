@@ -6,9 +6,9 @@
                  android:selectedTabTextColor="#ffffff"
                  androidSelectedTabHighlightColor="#ffffff">
             <TabViewItem title="Tab 1">
-                <GridLayout columns="*" rows="*">
-                    <Label class="message" :text="msg" col="0" row="0"/>
-                </GridLayout>
+                <StackLayout>
+                    <Button class="btn" text="Start Monitoring" @onTap="startLocationTracking"/>
+                </StackLayout>
             </TabViewItem>
             <TabViewItem title="Tab 2">
                 <GridLayout columns="*" rows="*">
@@ -25,11 +25,18 @@
 </template>
 
 <script >
+import {mapActions, mapGetters} from 'vuex'
   export default {
     data() {
       return {
         msg: 'Hello World!'
       }
+    },
+    methods:{
+      ...mapActions([
+        'startLocationTracking',
+        'stopLocationTracking'
+      ])
     }
   }
 </script>
